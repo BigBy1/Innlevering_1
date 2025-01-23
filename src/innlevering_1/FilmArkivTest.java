@@ -10,6 +10,7 @@ class FilmArkivTest {
 	void test() {
 		Filmarkiv tabell = new Filmarkiv(10);
 		assertEquals(10, tabell.length);
+		//dette er bare en test om git hub funker.
 	}
 
 }
