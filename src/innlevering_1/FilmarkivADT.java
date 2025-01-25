@@ -15,7 +15,7 @@ public interface FilmarkivADT {
 	 * 
 	 * @param nyFilm
 	 */
-	void leggTilFilm(Film nyFilm);
+	void leggTilFilm(Film nyFilm, Sjanger sjanger);
 
 	/**
 	 * Sletter en fil med gitt nr
@@ -53,5 +53,6 @@ public interface FilmarkivADT {
 	 * @return antall filmer i arkivet
 	 */
 	int antall();
+
 
 }

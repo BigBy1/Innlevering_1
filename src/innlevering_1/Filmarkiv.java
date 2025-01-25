@@ -3,29 +3,39 @@ package innlevering_1;
 public class Filmarkiv implements FilmarkivADT {
 	
 	private int antall;
+	private int antallSjanger;
+	
 	private int storrelse;
+	private int sjangerStorrelse=1;
 	
 	public Film [] Tabell; 
+	
+	public Sjanger [] Sjanger; 
 
 	public Filmarkiv (int storrelse) {
 		this.antall = 0;
 		this.storrelse = storrelse;
 		
 		this.Tabell = new Film [storrelse];
+		this.Sjanger = new Sjanger [sjangerStorrelse];
 	}
+	
+	
 	
 	
 	
 	@Override
 	public Film finnFilm(int nr) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return Tabell[nr];
 	}
 
 	@Override
-	public void leggTilFilm(Film nyFilm) {
+	public void leggTilFilm(Film nyFilm, Sjanger sjanger) {
 		
 		
+		
+		//tabellen med filmer.
 		if (antall == storrelse) {
 			Film [] TabellHolder = Tabell;
 			
@@ -39,7 +49,27 @@ public class Filmarkiv implements FilmarkivADT {
 		else {
 			Tabell[antall] = nyFilm;
 		}
+		
+				
+		
 		antall++;
+		
+		boolean finnesSjanger = false;
+		
+		for (int i = 0; i<Sjanger.length;i++) {
+			if(Sjanger[i]==sjanger);{
+				finnesSjanger =true;
+			}
+			
+		}
+		
+		if (finnesSjanger = true) {
+			antall(sjanger);
+		}
+		else  {
+			antallSjanger++;
+			antall(sjanger);
+		}
 	}
 
 	@Override
@@ -62,16 +92,27 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public int antall(Sjanger sjanger) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		
+		Sjanger [sjangerStorrelse] = sjanger;
+		
+		sjangerStorrelse++;
+		
+		return antallSjanger;
 	}
 
 	@Override
 	public int antall() {
 		// TODO Auto-generated method stub
-		return 0;
+		return antall++;
 	}
 	
+	public int storrelse() {
+		return storrelse;
+	}
+
+
 	
 
 }

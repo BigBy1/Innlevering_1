@@ -10,6 +10,7 @@ public class Film {
 	private int lanseringsår;
 	// private enum sjanger;
 	private String filmselskapet;
+	
 
 	public Film() {
 
