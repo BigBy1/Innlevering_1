@@ -8,7 +8,7 @@ public class Film {
 	private String filmskaper;
 	private String tittel;
 	private int lanseringsår;
-	// private enum sjanger;
+	private Sjanger sjanger;
 	private String filmselskapet;
 	
 
@@ -16,12 +16,13 @@ public class Film {
 
 	}
 
-	public Film(int nr, String filmskaper, String tittel, int lanseringsår, String filmselskapet) {
+	public Film(int nr, String filmskaper, String tittel, int lanseringsår, String filmselskapet, Sjanger sjanger) {
 		this.nr = nr;
 		this.filmskaper = filmskaper;
 		this.lanseringsår = lanseringsår;
 		this.filmselskapet = filmselskapet;
-
+		this.sjanger = sjanger;
+		
 	}
 
 	// get/set metoder til nr
@@ -58,6 +59,16 @@ public class Film {
 
 	public void setFilmselskapet(String filmselskapet) {
 		this.filmselskapet = filmselskapet;
+	}
+	
+	// get/set metode for Sjanger
+	
+	public Sjanger getSjanger() {
+		return sjanger;
+	}
+	
+	public void settSjanger(Sjanger sjanger) {
+		this.sjanger = sjanger;
 	}
 	
 	@Override
