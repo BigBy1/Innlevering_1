@@ -1,5 +1,6 @@
 package innlevering_1;
 
+
 public interface FilmarkivADT {
 
 	/**

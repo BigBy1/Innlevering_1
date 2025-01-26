@@ -1,5 +1,6 @@
 package innlevering_1;
 
+
 public class Filmarkiv implements FilmarkivADT {
 
 	private int antall;
@@ -18,8 +19,14 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public Film finnFilm(int nr) {
+		
+		for (int i =0; i<antall; i++) {
+			if (Tabell[i].getNr()==nr) {
+				return Tabell[i];
+			}
+		}
 
-		return Tabell[nr];
+		return null;
 	}
 
 	@Override
@@ -34,11 +41,10 @@ public class Filmarkiv implements FilmarkivADT {
 			for (int i = 0; i < TabellHolder.length; i++) {
 				Tabell[i] = TabellHolder[i];
 			}
-			Tabell[antall] = nyFilm;
-		} else {
-			Tabell[antall] = nyFilm;
+			
 		}
-
+		
+		Tabell[antall] = nyFilm;
 		antall++;
 
 	}
@@ -49,7 +55,7 @@ public class Filmarkiv implements FilmarkivADT {
 		for (int i = 0; i < antall; i++) {
 			if (Tabell[i].getNr() == filmnr) {
 
-				Tabell[i] = Tabell[antall];
+				Tabell[i] = Tabell[antall-1];
 				antall--;
 				return true;
 			}
@@ -75,7 +81,7 @@ public class Filmarkiv implements FilmarkivADT {
 		Film[] filmMiddlertidig = new Film[antall];
 
 		for (int i = 0; i < antall; i++) {
-			if (Tabell[i].getTittel().equals(delstreng)) {
+			if (Tabell[i].getFilmskaper().equals(delstreng)) {
 				filmMiddlertidig[i] = Tabell[i];
 			}
 		}
@@ -91,11 +97,25 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public int antall() {
 
-		return antall++;
+		return antall;
 	}
 
 	public int storrelse() {
 		return storrelse;
 	}
+	
+	
+	//trimme tabellen
+	
+	private Film[] trimTab(Film[] tab, int n) { 
+		  // n er antall elementer 
+		  Film[] nytab = new Film[n]; 
+		  int i = 0; 
+		  while (i < n) { 
+		   nytab[i] = tab[i]; 
+		   i++; 
+		  } 
+		  return nytab; 
+		 } 
 
 }

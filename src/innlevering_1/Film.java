@@ -2,6 +2,7 @@ package innlevering_1;
 
 import java.util.Objects;
 
+
 public class Film {
 
 	private int nr;
@@ -16,12 +17,12 @@ public class Film {
 
 	}
 
-	public Film(int nr, String filmskaper, String tittel, int lanseringsår, String filmselskapet, Sjanger sjanger) {
+	public Film(int nr, String filmskaper, String tittel, int lanseringsår, String filmselskapet) {
+		this.tittel =tittel;
 		this.nr = nr;
 		this.filmskaper = filmskaper;
 		this.lanseringsår = lanseringsår;
 		this.filmselskapet = filmselskapet;
-		this.sjanger = sjanger;
 		
 	}
 
@@ -70,6 +71,17 @@ public class Film {
 	public void settSjanger(Sjanger sjanger) {
 		this.sjanger = sjanger;
 	}
+	
+	
+	// get/set metode for lanseringsår
+	
+		public int getLanserinår() {
+			return lanseringsår;
+		}
+		
+		public void settlanseringsår(int lanseringsår) {
+			this.lanseringsår = lanseringsår;
+		}
 	
 	@Override
 	public int hashCode() {
