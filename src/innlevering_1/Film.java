@@ -54,7 +54,7 @@ public class Film {
 	}
 
 	// get/set metoder til filmskaper
-	public String filmselskapet() {
+	public String getfilmselskapet() {
 		return filmselskapet;
 	}
 

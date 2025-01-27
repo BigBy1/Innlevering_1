@@ -26,8 +26,7 @@ public class Meny {
 					+ "leggTilFilm, slettFilm, soekTittel, soekProdusent \n" + "Skriv 0 for å avslutte");
 
 			if (svar.equals("leggTilFilm")) {
-				int nummer = filma.antall() + 1;
-				String produser = showInputDialog("Filmen vil få nummer: " + nummer + 1 + "\n" + "Produseren:");
+				String produser = showInputDialog("Produseren:");
 
 				String Tittel = showInputDialog("Tittel");
 				String årstallS = showInputDialog("Lanseringsår");
@@ -38,9 +37,8 @@ public class Meny {
 				String sjangerS = showInputDialog("Sjanger (ACTION, DRAMA, HISTORY, SCIFI");
 				Sjanger sjanger = Sjanger.valueOf(sjangerS);
 
-				filma.leggTilFilm(new Film(nummer, produser, Tittel, årstall, produsenten), sjanger);
+				filma.leggTilFilm(new Film(filma.hashCode(), produser, Tittel, årstall, produsenten), sjanger);
 
-				System.out.print(filma.finnFilm(filma.antall()).getTittel());
 
 			}
 			
@@ -49,7 +47,19 @@ public class Meny {
 				int sletteNr = Integer.parseInt(slette);
 				
 				System.out.print(filma.slettFilm(sletteNr));
-				filma.slettFilm(sletteNr);
+				
+			}
+			if (svar.equals("soekTittel")) {
+				String Tittel =showInputDialog ("Hvilken tittel vil du finne");
+				Film liste[] = filma.soekTittel(Tittel);
+				
+				
+			}
+			
+			if (svar.equals("soekProdusent")) {
+				String produsent =showInputDialog ("Hvilken produsent vil du finne");
+				Film liste[] = filma.soekProdusent(produsent);
+				
 				
 			}
 			

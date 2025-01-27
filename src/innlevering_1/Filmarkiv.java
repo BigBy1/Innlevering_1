@@ -1,6 +1,5 @@
 package innlevering_1;
 
-
 public class Filmarkiv implements FilmarkivADT {
 
 	private int antall;
@@ -19,9 +18,9 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public Film finnFilm(int nr) {
-		
-		for (int i =0; i<antall; i++) {
-			if (Tabell[i].getNr()==nr) {
+
+		for (int i = 0; i < antall; i++) {
+			if (Tabell[i].getNr() == nr) {
 				return Tabell[i];
 			}
 		}
@@ -41,9 +40,9 @@ public class Filmarkiv implements FilmarkivADT {
 			for (int i = 0; i < TabellHolder.length; i++) {
 				Tabell[i] = TabellHolder[i];
 			}
-			
+
 		}
-		
+
 		Tabell[antall] = nyFilm;
 		antall++;
 
@@ -55,7 +54,7 @@ public class Filmarkiv implements FilmarkivADT {
 		for (int i = 0; i < antall; i++) {
 			if (Tabell[i].getNr() == filmnr) {
 
-				Tabell[i] = Tabell[antall-1];
+				Tabell[i] = Tabell[antall - 1];
 				antall--;
 				return true;
 			}
@@ -71,8 +70,14 @@ public class Filmarkiv implements FilmarkivADT {
 		for (int i = 0; i < antall; i++) {
 			if (Tabell[i].getTittel().equals(delstreng)) {
 				filmMiddlertidig[i] = Tabell[i];
+
+				int plass = i + 1;
+				System.out.print("Tittelen: " + filmMiddlertidig[i].getTittel() + "\n" + "Nr: "
+						+ filmMiddlertidig[i].getNr() + "\n" + "Plass: " + plass + "\n");
+
 			}
 		}
+
 		return filmMiddlertidig;
 	}
 
@@ -83,6 +88,11 @@ public class Filmarkiv implements FilmarkivADT {
 		for (int i = 0; i < antall; i++) {
 			if (Tabell[i].getFilmskaper().equals(delstreng)) {
 				filmMiddlertidig[i] = Tabell[i];
+
+				int plass = i + 1;
+				System.out.print("Tittelen: " + filmMiddlertidig[i].getTittel() + "\n" + "Nr: "+
+						"Produsent: "+ filmMiddlertidig[i].getfilmselskapet()
+						+ filmMiddlertidig[i].getNr() + "\n" + "Plass: " + plass + "\n");
 			}
 		}
 		return filmMiddlertidig;
@@ -103,19 +113,18 @@ public class Filmarkiv implements FilmarkivADT {
 	public int storrelse() {
 		return storrelse;
 	}
-	
-	
-	//trimme tabellen
-	
-	private Film[] trimTab(Film[] tab, int n) { 
-		  // n er antall elementer 
-		  Film[] nytab = new Film[n]; 
-		  int i = 0; 
-		  while (i < n) { 
-		   nytab[i] = tab[i]; 
-		   i++; 
-		  } 
-		  return nytab; 
-		 } 
+
+	// trimme tabellen
+
+	private Film[] trimTab(Film[] tab, int n) {
+		// n er antall elementer
+		Film[] nytab = new Film[n];
+		int i = 0;
+		while (i < n) {
+			nytab[i] = tab[i];
+			i++;
+		}
+		return nytab;
+	}
 
 }
