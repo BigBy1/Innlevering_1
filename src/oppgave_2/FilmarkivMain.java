@@ -1,11 +1,12 @@
-package innlevering_1;
+package oppgave_2;
+
 
 public class FilmarkivMain {
 
 	public static void main(String[] args) {
 		
+		Filmarkiv filma = new Filmarkiv();
 		
-		FilmarkivADT filma = new Filmarkiv(100);
 		
 		//liste med filmer Dette vil bli ganske lang fordi jeg lager 99 eksemplarer med filmer
 		//men for å spare meg tid så bruker jeg chatGPT til å lage de fleste med å mate den informasjon som den første.
