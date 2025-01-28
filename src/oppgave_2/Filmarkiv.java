@@ -11,18 +11,20 @@ public class Filmarkiv implements FilmarkivADT {
 	
 	private int antall;
 	private LinearNode<Film> start;
-	
+	private LinearNode<Film> forste;
 
 	//Tom konstruktør
 	
 	public Filmarkiv() {
 		
-		start = null;
+		start = new LinearNode<>();
+		start.setNeste(forste);
 		
 	}
 	
 	
-	public Filmarkiv(Film nyFilm) {
+	public Filmarkiv(Film nyFilm, LinearNode<Film> neste) {
+		
 		
 		LinearNode<Film> nyNode = new LinearNode<>(nyFilm);
 		
@@ -53,13 +55,12 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public void leggTilFilm(Film nyFilm, Sjanger sjanger) {
-
-
-		LinearNode<Film> nyNode = new LinearNode<>(nyFilm);
 		
-		nyNode.setNeste(start);
+		LinearNode<Film> holder=forste;
 		
-		start = nyNode;
+		forste = new LinearNode<>(nyFilm);
+		
+		forste.setNeste(holder);
 		
 		antall++;
 
@@ -68,16 +69,16 @@ public class Filmarkiv implements FilmarkivADT {
 	
 	@Override
 	public boolean slettFilm(int filmnr) {
-		LinearNode<Film> current = start;
+		LinearNode<Film> current = forste;
 		LinearNode<Film> holder = current;
 		//slette den eventuelle første
 		if (current.getData().getNr() == filmnr) {
-				start = current.getNeste();
+				forste = current.getNeste();
 				antall--;
 				return true;
 			}
 		
-		
+		current = current.getNeste();
 		
 		while (current!=null) {
 			
@@ -96,11 +97,11 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public Film[] soekTittel(String delstreng) {
 		Film[] filmMiddlertidig = new Film[antall];
-		LinearNode<Film> current = start;
+		LinearNode<Film> current = forste;
 		int plassTabbel = 0;
 		int plass = 0;
 		
-		while (current!=null) {
+		while (current.getNeste()!=null) {
 			
 			plass++;
 			
@@ -113,7 +114,15 @@ public class Filmarkiv implements FilmarkivADT {
 			}
 			current = current.getNeste();
 		}
+		
+		//sjekker den siste også.
+		if (current.getData().getTittel().equals(delstreng)) {
+			filmMiddlertidig[plassTabbel]=current.getData();
+			plassTabbel++;
 			
+			System.out.print("Tittelen: " + current.getData().getTittel() + "\n" + "Nr: "
+					+ current.getData().getNr() + "\n" + "Plass: " + plass + "\n");
+		}
 
 		return filmMiddlertidig;
 	}
@@ -128,7 +137,7 @@ public class Filmarkiv implements FilmarkivADT {
 			if (current.getData().getFilmskaper().equals(delstreng)) {
 				
 				System.out.print("Tittelen: " + current.getData().getTittel() + "\n" + "Nr: "+
-						"Produsent: "+ current.getData().getfilmselskapet()
+						"Produsent: "+ current.getData().getFilmselskapet()
 						+ current.getData().getNr() + "\n" + "Plass: " + plass + "\n");
 			}
 			plass++;
@@ -153,17 +162,5 @@ public class Filmarkiv implements FilmarkivADT {
 		return storrelse;
 	}
 
-	// trimme tabellen
-
-	private Film[] trimTab(Film[] tab, int n) {
-		// n er antall elementer
-		Film[] nytab = new Film[n];
-		int i = 0;
-		while (i < n) {
-			nytab[i] = tab[i];
-			i++;
-		}
-		return nytab;
-	}
 
 }

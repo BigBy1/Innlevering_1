@@ -2,6 +2,7 @@ package innlevering_1;
 
 public class Filmarkiv implements FilmarkivADT {
 
+	
 	private int antall;
 	private int antallSjanger = 4;
 
@@ -68,7 +69,7 @@ public class Filmarkiv implements FilmarkivADT {
 		Film[] filmMiddlertidig = new Film[antall];
 
 		for (int i = 0; i < antall; i++) {
-			if (Tabell[i].getTittel().equals(delstreng)) {
+			if (Tabell[i].getTittel().contains(delstreng)) {
 				filmMiddlertidig[i] = Tabell[i];
 
 				int plass = i + 1;

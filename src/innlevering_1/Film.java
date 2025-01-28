@@ -5,7 +5,8 @@ import java.util.Objects;
 
 public class Film {
 
-	private int nr;
+	private  int nr;
+	private static int teller;
 	private String filmskaper;
 	private String tittel;
 	private int lanseringsår;
@@ -17,9 +18,10 @@ public class Film {
 
 	}
 
-	public Film(int nr, String filmskaper, String tittel, int lanseringsår, String filmselskapet) {
+	public Film(String filmskaper, String tittel, int lanseringsår, String filmselskapet) {
 		this.tittel =tittel;
-		this.nr = nr;
+		teller++;
+		nr=nr+teller;
 		this.filmskaper = filmskaper;
 		this.lanseringsår = lanseringsår;
 		this.filmselskapet = filmselskapet;

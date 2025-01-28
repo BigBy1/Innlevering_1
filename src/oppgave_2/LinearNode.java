@@ -4,9 +4,15 @@ public class LinearNode <T> {
 	public T data;
 	public LinearNode<T> neste;
 	
+	//start
+	public LinearNode () {
+		this.neste = null;
+	}
 	public LinearNode (T data) {
 		this.data = data;
+		this.neste = null;
 	}
+	
 	public T getData() {
 		return data;
 	}

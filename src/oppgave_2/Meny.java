@@ -38,7 +38,7 @@ public class Meny {
 				String sjangerS = showInputDialog("Sjanger (ACTION, DRAMA, HISTORY, SCIFI");
 				Sjanger sjanger = Sjanger.valueOf(sjangerS);
 
-				filma.leggTilFilm(new Film(filma.hashCode(), produser, Tittel, årstall, produsenten), sjanger);
+				filma.leggTilFilm(new Film(produser, Tittel, årstall, produsenten), sjanger);
 
 
 			}
