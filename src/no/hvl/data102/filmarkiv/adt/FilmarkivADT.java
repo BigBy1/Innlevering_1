@@ -1,5 +1,7 @@
-package innlevering_1;
+package no.hvl.data102.filmarkiv.adt;
 
+import no.hvl.data102.filmarkiv.impl.Film;
+import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 public interface FilmarkivADT {
 
@@ -16,7 +18,7 @@ public interface FilmarkivADT {
 	 * 
 	 * @param nyFilm
 	 */
-	void leggTilFilm(Film nyFilm, Sjanger sjanger);
+	void leggTilFilm(Film nyFilm);
 
 	/**
 	 * Sletter en fil med gitt nr
@@ -54,6 +56,8 @@ public interface FilmarkivADT {
 	 * @return antall filmer i arkivet
 	 */
 	int antall();
+
+	
 
 
 }

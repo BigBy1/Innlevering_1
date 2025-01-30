@@ -1,4 +1,4 @@
-package innlevering_1;
+package no.hvl.data102.filmarkiv.impl;
 
 import java.util.Objects;
 
@@ -18,13 +18,14 @@ public class Film {
 
 	}
 
-	public Film(String filmskaper, String tittel, int lanseringsår, String filmselskapet) {
+	public Film(String filmskaper, String tittel, int lanseringsår, String filmselskapet, Sjanger sjanger) {
 		this.tittel =tittel;
 		teller++;
 		nr=nr+teller;
 		this.filmskaper = filmskaper;
 		this.lanseringsår = lanseringsår;
 		this.filmselskapet = filmselskapet;
+		this.sjanger = sjanger;
 		
 	}
 

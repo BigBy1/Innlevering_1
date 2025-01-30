@@ -1,8 +1,10 @@
-package innlevering_1;
+package no.hvl.data102.filmarkiv.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import no.hvl.data102.filmarkiv.impl.Filmarkiv;
 
 class FilmArkivTest {
 

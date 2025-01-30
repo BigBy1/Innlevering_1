@@ -1,4 +1,6 @@
-package innlevering_1;
+package no.hvl.data102.filmarkiv.impl;
+
+import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 
 public class Filmarkiv implements FilmarkivADT {
 
@@ -30,7 +32,7 @@ public class Filmarkiv implements FilmarkivADT {
 	}
 
 	@Override
-	public void leggTilFilm(Film nyFilm, Sjanger sjanger) {
+	public void leggTilFilm(Film nyFilm) {
 
 		// tabellen med filmer.
 		if (antall == storrelse) {
@@ -67,20 +69,20 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public Film[] soekTittel(String delstreng) {
 		Film[] filmMiddlertidig = new Film[antall];
+		int antallMid = 0;
 
 		for (int i = 0; i < antall; i++) {
 			if (Tabell[i].getTittel().contains(delstreng)) {
-				filmMiddlertidig[i] = Tabell[i];
-
-				int plass = i + 1;
-				System.out.print("Tittelen: " + filmMiddlertidig[i].getTittel() + "\n" + "Nr: "
-						+ filmMiddlertidig[i].getNr() + "\n" + "Plass: " + plass + "\n");
-
+				filmMiddlertidig[antallMid] = Tabell[i];
+				antallMid++;
 			}
 		}
-
-		return filmMiddlertidig;
+		System.out.print(filmMiddlertidig[0].getTittel());
+		
+		return trimTab(filmMiddlertidig, antallMid);
 	}
+	
+	
 
 	@Override
 	public Film[] soekProdusent(String delstreng) {
