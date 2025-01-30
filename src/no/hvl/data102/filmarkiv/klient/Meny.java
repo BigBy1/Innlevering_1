@@ -29,7 +29,7 @@ public class Meny {
 		boolean fortsett = true;
 		while (fortsett) {
 			String svar = showInputDialog("Skriv inn en av disse tinge: \n"
-	+ "leggTilFilm, slettFilm, soekTittel, soekProdusent \n" + "Skriv 0 for å avslutte");
+	+ "leggTilFilm, slettFilm, soekTittel, soekProdusent, soekProduser \n" + "Skriv 0 for å avslutte");
 
 			if (svar.equals("leggTilFilm")) {
 				//starter spørringen
@@ -58,8 +58,8 @@ public class Meny {
 			
 			if (svar.equals("soekProdusent")) {
 				String produsent =showInputDialog ("Hvilken produsent vil du finne");
-				Film liste[] = filma.soekProdusent(produsent);
 				
+				tekstgr.skrivUtFilmProdusent(filma, produsent);
 				
 			}
 			

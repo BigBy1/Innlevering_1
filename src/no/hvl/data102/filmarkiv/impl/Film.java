@@ -7,6 +7,9 @@ public class Film {
 
 	private  int nr;
 	private static int teller;
+	
+	
+	
 	private String filmskaper;
 	private String tittel;
 	private int lanseringsår;

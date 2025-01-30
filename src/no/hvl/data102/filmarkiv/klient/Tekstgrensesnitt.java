@@ -62,14 +62,23 @@ public class Tekstgrensesnitt {
  } 
  
  // Skriver ut alle Filmer av en produsent (produsent er delstreng) 
- public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) { 
-  // TODO 
+ public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) {
+	 
+  Film liste[] = arkiv.soekProdusent(delstreng);
+  
+  System.out.print("Filmer: \n");
+  
+  for(int i = 0; i<liste.length;i++) {
+	  System.out.print(liste[i].getTittel()+"\n");
+  }
+  
  } 
  
  // Skriver ut en enkel statistikk som inneholder antall filmer totalt 
  // og hvor mange det er i hver sjanger. 
  public void skrivUtStatistikk(FilmarkivADT arkiv) { 
-  // TODO 
+	 
+  
  } 
  
  // osv ... andre metoder 
