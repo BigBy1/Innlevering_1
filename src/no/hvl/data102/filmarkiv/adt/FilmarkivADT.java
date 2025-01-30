@@ -57,8 +57,6 @@ public interface FilmarkivADT {
 	 */
 	int antall();
 
-	void leggTilFilm1(Film nyFilm);
-
 	
 
 	

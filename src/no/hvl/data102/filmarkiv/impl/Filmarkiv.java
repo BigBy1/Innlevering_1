@@ -9,6 +9,12 @@ public class Filmarkiv implements FilmarkivADT {
 	private int antallSjanger = 4;
 
 	private int storrelse;
+	
+	//sjanger:
+		private int action= 0;
+		private int historie = 0;
+		private int siFi = 0;
+		private int drama = 0;
 
 	public Film[] Tabell;
 
@@ -45,6 +51,26 @@ public class Filmarkiv implements FilmarkivADT {
 			}
 
 		}
+		Sjanger sjanger = nyFilm.getSjanger();
+		
+		switch(sjanger) {
+		case ACTION:
+			action++;
+			break;
+			
+		case DRAMA:
+			drama++;
+			break;
+
+		case SCIFI:
+			siFi++;
+			break;
+		
+		case HISTORY:
+			historie++;
+			break;
+		}
+		
 
 		Tabell[antall] = nyFilm;
 		antall++;
@@ -77,7 +103,6 @@ public class Filmarkiv implements FilmarkivADT {
 				antallMid++;
 			}
 		}
-		System.out.print(filmMiddlertidig[0].getTittel());
 		
 		return trimTab(filmMiddlertidig, antallMid);
 	}
@@ -101,9 +126,22 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public int antall(Sjanger sjanger) {
+		switch(sjanger) {
+		case ACTION:
+			return action;
+			
+		case DRAMA:
+			return drama;
 
-		return antallSjanger;
+		case SCIFI:
+			return siFi;
+		
+		case HISTORY:
+			return historie;
+		}
+		return (Integer) null;
 	}
+
 
 	@Override
 	public int antall() {
@@ -128,10 +166,5 @@ public class Filmarkiv implements FilmarkivADT {
 		return nytab;
 	}
 
-	@Override
-	public void leggTilFilm1(Film nyFilm) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

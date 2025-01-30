@@ -4,6 +4,7 @@ import static javax.swing.JOptionPane.*;
 
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 import no.hvl.data102.filmarkiv.impl.Film;
+import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 public class Meny {
 
@@ -30,7 +31,7 @@ public class Meny {
 		while (fortsett) {
 			String svar = showInputDialog("Skriv inn en av disse tinge: \n"
 	+ "leggTilFilm, slettFilm, soekTittel, soekProdusent, Antall \n" + "Skriv 0 for å avslutte");
-
+			
 			if (svar.equals("leggTilFilm")) {
 				//starter spørringen
 				filma.leggTilFilm(tekstgr.lesFilm());
@@ -65,7 +66,11 @@ public class Meny {
 			if (svar.equals("Antall")) {
 				
 				
-				System.out.print(""+ filma.antall());
+				System.out.print(""+ filma.antall()+"\n");
+				System.out.print(""+ filma.antall(Sjanger.ACTION)+"\n");
+				System.out.print(""+ filma.antall(Sjanger.DRAMA)+"\n");
+				System.out.print(""+ filma.antall(Sjanger.SCIFI)+"\n");
+				System.out.print(""+ filma.antall(Sjanger.HISTORY)+"\n");
 				
 			}
 			

@@ -6,36 +6,39 @@ import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 public class Filmarkiv implements FilmarkivADT {
 
-	private int antallSjanger = 4;
+	//sjanger:
+	private int action= 0;
+	private int historie = 0;
+	private int siFi = 0;
+	private int drama = 0;
 
 	private int storrelse;
-	
-	//kode for node
-	
+
+	// kode for node
+
 	private int antall;
 	private LinearNode<Film> start;
 	private LinearNode<Film> forste;
 
-	//Tom konstruktør
-	
+	// Tom konstruktør
+
 	public Filmarkiv() {
-		
+
 		start = new LinearNode<>();
 		start.setNeste(forste);
-		
+
 	}
-	
-	
+
 	public Filmarkiv(Film nyFilm, LinearNode<Film> neste) {
-		
-		
+
 		LinearNode<Film> nyNode = new LinearNode<>(nyFilm);
-		
+
 		nyNode.setNeste(start);
-		
+
 		start = nyNode;
-		
+
 		antall++;
+		
 		
 		
 	}
@@ -43,68 +46,82 @@ public class Filmarkiv implements FilmarkivADT {
 	@Override
 	public Film finnFilm(int nr) {
 		LinearNode<Film> current = start;
-		
-		while (current!=null) {
-			if(current.getData().getNr()==nr) {
+
+		while (current != null) {
+			if (current.getData().getNr() == nr) {
 				return current.getData();
 			}
-			
+
 			current = current.getNeste();
 		}
-		
 
 		return null;
 	}
-	
+
 	@Override
-	public void leggTilFilm1(Film nyFilm) {
-		
-	
-		
-		if (forste==null) {
+	public void leggTilFilm(Film nyFilm) {
+
+		if (forste == null) {
 			forste = new LinearNode<>(nyFilm);
-		}
-		else {
-			LinearNode<Film> holder=forste;
-			
-			while(holder !=null) {
+		} else {
+			LinearNode<Film> holder = forste;
+
+			while (holder.getNeste() != null) {
 				holder = holder.getNeste();
 			}
-			
+
 			holder.setNeste(new LinearNode<>(nyFilm));
+
+		}
+			Sjanger sjanger = nyFilm.getSjanger();
 		
+		switch(sjanger) {
+		case ACTION:
+			action++;
+			break;
+			
+		case DRAMA:
+			drama++;
+			break;
+
+		case SCIFI:
+			siFi++;
+			break;
 		
+		case HISTORY:
+			historie++;
+			break;
 		}
 		
+
 		antall++;
 
 	}
 
-	
 	@Override
 	public boolean slettFilm(int filmnr) {
 		LinearNode<Film> current = forste;
 		LinearNode<Film> holder = current;
-		//slette den eventuelle første
+		// slette den eventuelle første
 		if (current.getData().getNr() == filmnr) {
-				forste = current.getNeste();
-				antall--;
-				return true;
-			}
-		
+			forste = current.getNeste();
+			antall--;
+			return true;
+		}
+
 		current = current.getNeste();
-		
-		while (current!=null) {
-			
+
+		while (current != null) {
+
 			if (current.getData().getNr() == filmnr) {
 				holder.setNeste(current.getNeste());
 				antall--;
 				return true;
 			}
-				holder = current;
-				current = current.getNeste();
+			holder = current;
+			current = current.getNeste();
 		}
-		
+
 		return false;
 	}
 
@@ -113,57 +130,63 @@ public class Filmarkiv implements FilmarkivADT {
 		Film[] filmMiddlertidig = new Film[antall];
 		LinearNode<Film> current = forste;
 		int plassTabbel = 0;
-		int plass = 0;
-		
-		while (current.getNeste()!=null) {
-			
-			plass++;
-			
-			if (current.getData().getTittel().equals(delstreng)) {
-				filmMiddlertidig[plassTabbel]=current.getData();
+
+		while (current.getNeste() != null) {
+
+			if (current.getData().getTittel().contains(delstreng)) {
+				filmMiddlertidig[plassTabbel] = current.getData();
 				plassTabbel++;
-				
-				System.out.print("Tittelen: " + current.getData().getTittel() + "\n" + "Nr: "
-						+ current.getData().getNr() + "\n" + "Plass: " + plass + "\n");
 			}
 			current = current.getNeste();
-		}
-		
-		//sjekker den siste også.
-		if (current.getData().getTittel().equals(delstreng)) {
-			filmMiddlertidig[plassTabbel]=current.getData();
-			plassTabbel++;
-			
-			System.out.print("Tittelen: " + current.getData().getTittel() + "\n" + "Nr: "
-					+ current.getData().getNr() + "\n" + "Plass: " + plass + "\n");
-		}
 
-		return filmMiddlertidig;
+			// sjekker den siste også.
+			if (current.getData().getTittel().contains(delstreng)) {
+				filmMiddlertidig[plassTabbel] = current.getData();
+			}
+
+		}
+		return trimTab(filmMiddlertidig, plassTabbel);
 	}
 
 	@Override
 	public Film[] soekProdusent(String delstreng) {
 		Film[] filmMiddlertidig = new Film[antall];
-		LinearNode<Film> current = start;
-		int plass = 1;
-		
-		while (current!=null) {
-			if (current.getData().getFilmskaper().equals(delstreng)) {
-				
-				System.out.print("Tittelen: " + current.getData().getTittel() + "\n" + "Nr: "+
-						"Produsent: "+ current.getData().getfilmselskapet()
-						+ current.getData().getNr() + "\n" + "Plass: " + plass + "\n");
+		LinearNode<Film> current = forste;
+		int plassTabbel = 0;
+
+		while (current.getNeste() != null) {
+
+			if (current.getData().getfilmselskapet().contains(delstreng)) {
+				filmMiddlertidig[plassTabbel] = current.getData();
+				plassTabbel++;
 			}
-			plass++;
-		current = current.getNeste();
+			current = current.getNeste();
+
+			// sjekker den siste også.
+			if (current.getData().getfilmselskapet().contains(delstreng)) {
+				filmMiddlertidig[plassTabbel] = current.getData();
+			}
+
 		}
-		return filmMiddlertidig;
+		return trimTab(filmMiddlertidig, plassTabbel);
 	}
 
 	@Override
 	public int antall(Sjanger sjanger) {
+		switch(sjanger) {
+		case ACTION:
+			return action;
+			
+		case DRAMA:
+			return drama;
 
-		return antallSjanger;
+		case SCIFI:
+			return siFi;
+		
+		case HISTORY:
+			return historie;
+		}
+		return 0;
 	}
 
 	@Override
@@ -176,13 +199,15 @@ public class Filmarkiv implements FilmarkivADT {
 		return storrelse;
 	}
 
-
-	@Override
-	public void leggTilFilm(Film nyFilm) {
-		// TODO Auto-generated method stub
-		
+	private Film[] trimTab(Film[] tab, int n) {
+		// n er antall elementer
+		Film[] nytab = new Film[n];
+		int i = 0;
+		while (i < n) {
+			nytab[i] = tab[i];
+			i++;
+		}
+		return nytab;
 	}
-
-
 
 }

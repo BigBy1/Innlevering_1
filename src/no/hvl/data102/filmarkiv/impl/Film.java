@@ -10,6 +10,7 @@ public class Film {
 	
 	
 	
+	
 	private String filmskaper;
 	private String tittel;
 	private int lanseringsår;
