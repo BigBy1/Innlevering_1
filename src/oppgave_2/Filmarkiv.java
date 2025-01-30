@@ -1,5 +1,8 @@
 package oppgave_2;
 
+import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
+import no.hvl.data102.filmarkiv.impl.Film;
+import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 public class Filmarkiv implements FilmarkivADT {
 
@@ -52,15 +55,26 @@ public class Filmarkiv implements FilmarkivADT {
 
 		return null;
 	}
-
+	
 	@Override
-	public void leggTilFilm(Film nyFilm, Sjanger sjanger) {
+	public void leggTilFilm1(Film nyFilm) {
 		
-		LinearNode<Film> holder=forste;
+	
 		
-		forste = new LinearNode<>(nyFilm);
+		if (forste==null) {
+			forste = new LinearNode<>(nyFilm);
+		}
+		else {
+			LinearNode<Film> holder=forste;
+			
+			while(holder !=null) {
+				holder = holder.getNeste();
+			}
+			
+			holder.setNeste(new LinearNode<>(nyFilm));
 		
-		forste.setNeste(holder);
+		
+		}
 		
 		antall++;
 
@@ -137,7 +151,7 @@ public class Filmarkiv implements FilmarkivADT {
 			if (current.getData().getFilmskaper().equals(delstreng)) {
 				
 				System.out.print("Tittelen: " + current.getData().getTittel() + "\n" + "Nr: "+
-						"Produsent: "+ current.getData().getFilmselskapet()
+						"Produsent: "+ current.getData().getfilmselskapet()
 						+ current.getData().getNr() + "\n" + "Plass: " + plass + "\n");
 			}
 			plass++;
@@ -161,6 +175,14 @@ public class Filmarkiv implements FilmarkivADT {
 	public int storrelse() {
 		return storrelse;
 	}
+
+
+	@Override
+	public void leggTilFilm(Film nyFilm) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

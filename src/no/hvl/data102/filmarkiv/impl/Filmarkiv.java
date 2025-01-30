@@ -128,4 +128,10 @@ public class Filmarkiv implements FilmarkivADT {
 		return nytab;
 	}
 
+	@Override
+	public void leggTilFilm1(Film nyFilm) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
