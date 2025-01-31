@@ -43,7 +43,7 @@ public class Meny {
 				String slette = showInputDialog ("Hvilket nummer vil du slette");
 				int sletteNr = Integer.parseInt(slette);
 				
-				System.out.print(filma.slettFilm(sletteNr));
+				System.out.print(filma.slettFilm(sletteNr)+"\n");
 				
 			}
 			if (svar.equals("soekTittel")) {
@@ -67,10 +67,10 @@ public class Meny {
 				
 				
 				System.out.print(""+ filma.antall()+"\n");
-				System.out.print(""+ filma.antall(Sjanger.ACTION)+"\n");
-				System.out.print(""+ filma.antall(Sjanger.DRAMA)+"\n");
-				System.out.print(""+ filma.antall(Sjanger.SCIFI)+"\n");
-				System.out.print(""+ filma.antall(Sjanger.HISTORY)+"\n");
+				System.out.print("Action "+ filma.antall(Sjanger.ACTION)+"\n");
+				System.out.print("Drama "+ filma.antall(Sjanger.DRAMA)+"\n");
+				System.out.print("Scifi "+ filma.antall(Sjanger.SCIFI)+"\n");
+				System.out.print("History "+ filma.antall(Sjanger.HISTORY)+"\n");
 				
 			}
 			

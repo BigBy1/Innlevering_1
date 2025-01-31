@@ -6,7 +6,6 @@ public class Filmarkiv implements FilmarkivADT {
 
 	
 	private int antall;
-	private int antallSjanger = 4;
 
 	private int storrelse;
 	
