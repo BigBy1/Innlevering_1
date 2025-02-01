@@ -1,8 +1,9 @@
-package oppgave_2;
+package no.hvl.data102.filmarkivOppgave2.impl;
 
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 import no.hvl.data102.filmarkiv.impl.Film;
 import no.hvl.data102.filmarkiv.impl.Sjanger;
+import no.hvl.data102.filmarkivOppgave2.klient.LinearNode;
 
 public class Filmarkiv implements FilmarkivADT {
 

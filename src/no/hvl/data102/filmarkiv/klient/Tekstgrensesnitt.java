@@ -19,7 +19,7 @@ public class Tekstgrensesnitt {
 	public Film lesFilm() {
 
 		String produser = showInputDialog("Produseren:");
-
+		
 		String Tittel = showInputDialog("Tittel");
 		String årstallS = showInputDialog("Lanseringsår");
 

@@ -1,8 +1,9 @@
-package oppgave_2;
+package no.hvl.data102.filmarkivOppgave2.klient;
 
 import no.hvl.data102.filmarkiv.impl.Film;
 import no.hvl.data102.filmarkiv.impl.Sjanger;
 import no.hvl.data102.filmarkiv.klient.Meny;
+import no.hvl.data102.filmarkivOppgave2.impl.Filmarkiv;
 
 public class FilmarkivMain {
 
@@ -37,7 +38,7 @@ public class FilmarkivMain {
 		
 		
 		
-		oppgave_2.Meny meny = new oppgave_2.Meny(filma);
+no.hvl.data102.filmarkivOppgave2.klient.Meny meny = new no.hvl.data102.filmarkivOppgave2.klient.Meny(filma);
 		
 		
 		

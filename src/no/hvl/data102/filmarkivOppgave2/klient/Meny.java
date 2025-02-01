@@ -1,10 +1,11 @@
-package oppgave_2;
+package no.hvl.data102.filmarkivOppgave2.klient;
 
 import static javax.swing.JOptionPane.*;
 
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 import no.hvl.data102.filmarkiv.impl.Film;
 import no.hvl.data102.filmarkiv.impl.Sjanger;
+import no.hvl.data102.filmarkivOppgave2.impl.Filmarkiv;
 
 public class Meny {
 
@@ -34,10 +35,7 @@ public class Meny {
 			
 			if (svar.equals("leggTilFilm")) {
 				//starter spørringen
-				Filmarkiv filmarkiv = new Filmarkiv();
-				filmarkiv.leggTilFilm(tekstgr.lesFilm());
-				
-
+			    filma.leggTilFilm(tekstgr.lesFilm());
 			}
 			
 			if (svar.equals("slettFilm")) {

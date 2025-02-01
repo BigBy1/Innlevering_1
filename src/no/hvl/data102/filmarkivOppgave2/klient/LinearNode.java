@@ -1,4 +1,4 @@
-package oppgave_2;
+package no.hvl.data102.filmarkivOppgave2.klient;
 
 public class LinearNode <T> {
 	public T data;

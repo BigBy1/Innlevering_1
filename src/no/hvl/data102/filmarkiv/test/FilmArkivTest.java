@@ -79,7 +79,7 @@ class FilmArkivTest {
 	//test om opprettelse av noder funker
 		@Test
 		void node() {
-			oppgave_2.Filmarkiv filma = new oppgave_2.Filmarkiv();
+			no.hvl.data102.filmarkivOppgave2.impl.Filmarkiv filma = new no.hvl.data102.filmarkivOppgave2.impl.Filmarkiv();
 			filma.leggTilFilm(new Film("Walt", "Tornerose", 1998, "Disney", Sjanger.ACTION));
 			filma.leggTilFilm(new Film("Musikk", "Nils", 1998, "Disney", Sjanger.ACTION));
 			filma.leggTilFilm(new Film("Brage", "Mark", 1998, "Disney", Sjanger.ACTION));
