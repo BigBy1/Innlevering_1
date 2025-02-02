@@ -132,7 +132,7 @@ public class Filmarkiv implements FilmarkivADT {
 		LinearNode<Film> current = forste;
 		int plassTabbel = 0;
 
-		while (current.getNeste() != null) {
+		while (current!= null) {
 
 			if (current.getData().getTittel().contains(delstreng)) {
 				filmMiddlertidig[plassTabbel] = current.getData();
@@ -140,10 +140,6 @@ public class Filmarkiv implements FilmarkivADT {
 			}
 			current = current.getNeste();
 
-			// sjekker den siste også.
-			if (current.getData().getTittel().contains(delstreng)) {
-				filmMiddlertidig[plassTabbel] = current.getData();
-			}
 
 		}
 		return trimTab(filmMiddlertidig, plassTabbel);
@@ -155,7 +151,7 @@ public class Filmarkiv implements FilmarkivADT {
 		LinearNode<Film> current = forste;
 		int plassTabbel = 0;
 
-		while (current.getNeste() != null) {
+		while (current != null) {
 
 			if (current.getData().getfilmselskapet().contains(delstreng)) {
 				filmMiddlertidig[plassTabbel] = current.getData();
@@ -163,10 +159,6 @@ public class Filmarkiv implements FilmarkivADT {
 			}
 			current = current.getNeste();
 
-			// sjekker den siste også.
-			if (current.getData().getfilmselskapet().contains(delstreng)) {
-				filmMiddlertidig[plassTabbel] = current.getData();
-			}
 
 		}
 		return trimTab(filmMiddlertidig, plassTabbel);
